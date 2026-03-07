@@ -7,14 +7,17 @@ Repository ini berisi dua program pelatihan: **BSD Engineer Training** (folder `
 ## 1. BSD Engineer Training (folder `BSD/`)
 
 ### Deskripsi
+
 Program pelatihan komprehensif untuk menjadi BSD Engineer profesional (FreeBSD, OpenBSD, NetBSD).
 
 ### Tujuan
+
 - Menguasai administrasi sistem BSD
 - Memahami keamanan dan hardening (PF, jails)
 - Mampu mengimplementasikan solusi produksi
 
 ### Struktur (isi di bawah `BSD/`)
+
 - **docs/** - Dokumentasi
 - **modules/** - Materi pembelajaran (12 modul)
 - **labs/** - lab-environment + lab-01..lab-12
@@ -28,6 +31,7 @@ Program pelatihan komprehensif untuk menjadi BSD Engineer profesional (FreeBSD, 
 - **assets/** - images, templates, videos, downloads
 
 ### Quick Start (BSD)
+
 ```bash
 cd BSD/labs/lab-environment
 vagrant up
@@ -38,14 +42,17 @@ vagrant up
 ## 2. Linux Engineer Training (folder `Linux/`)
 
 ### Deskripsi
+
 Program pelatihan komprehensif untuk menjadi Linux Engineer profesional (Ubuntu, Debian, RHEL, Rocky).
 
 ### Tujuan
+
 - Menguasai administrasi Linux (systemd, apt/dnf, LVM)
 - Jaringan (Netplan, ufw/firewalld), keamanan (SSH, fail2ban)
 - Mampu mengimplementasikan solusi produksi
 
 ### Struktur (isi di bawah `Linux/`)
+
 - **docs/** - Dokumentasi
 - **modules/** - 8 modul utama (01-fundamentals..08-capstone) + 12 modul (module-01-introduction..module-12-case-studies)
 - **labs/** - lab-environment, lab-01..lab-12, lab-checklist.md
@@ -65,13 +72,16 @@ Program pelatihan komprehensif untuk menjadi Linux Engineer profesional (Ubuntu,
 - **assets/** - images, templates, downloads
 
 ### Quick Start (Linux)
+
 ```bash
 cd Linux
 ./scripts/setup-lab.sh
 cd modules/01-fundamentals
 ./scripts/progress-tracker.sh
 ```
+
 Atau untuk Vagrant lab environment:
+
 ```bash
 cd Linux/labs/lab-environment
 vagrant up
@@ -86,6 +96,3 @@ Repository ini dirancang sebagai fondasi untuk peran **Linux Engineer** dan **BS
 Detail: **[INDUSTRY-READINESS.md](INDUSTRY-READINESS.md)**.
 
 ---
-
-## Lisensi
-MIT License
