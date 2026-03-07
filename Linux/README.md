@@ -11,37 +11,47 @@ Proyek pembelajaran komprehensif untuk transisi dari NetAdmin/SecAdmin menjadi L
 - Troubleshooting & Observability
 
 ## Struktur Folder
-*(Sesuai file chat: chat-Keterampilan untuk Linux Engineer.txt)*
-```
-modules/          # 8 modul: 01-fundamentals .. 08-capstone
-labs/             # Lab exercises & lab-checklist.md
-scripts/          # setup-lab.sh, progress-tracker.sh, dll.
-configs/          # Konfigurasi sistem
-playbooks/        # Ansible automation
-containers/       # Docker/Podman files
-monitoring/       # Observability configs
-security/         # Security hardening scripts
-troubleshooting/  # Runbook & guides
-capstone/         # Project akhir
-resources/        # Cheat sheet & referensi
-docs/             # Dokumentasi
-```
+Struktur di bawah ini mengacu pada isi folder `Linux/` di repository.
+
+- **docs/** - Dokumentasi
+- **modules/** - 8 modul utama (01-fundamentals..08-capstone) + 12 modul (module-01-introduction..module-12-case-studies)
+- **labs/** - lab-environment, lab-01..lab-12, lab-checklist.md
+- **scripts/** - setup-lab.sh, progress-tracker.sh, installation, configuration, backup, monitoring, security, maintenance, utilities
+- **configs/** - netplan, ufw, firewalld, rsyslog, logrotate, LVM, systemd, nginx, mysql, ssh
+- **playbooks/** - Ansible automation
+- **containers/** - Docker/Podman files
+- **monitoring/** - Observability configs
+- **security/** - Security hardening scripts
+- **troubleshooting/** - Runbook & guides
+- **capstone/** - Project akhir
+- **resources/** - Cheat sheet & referensi
+- **assessments/** - quizzes, practical exams, projects, certifications
+- **references/** - cheat sheets, man pages, books, websites, videos
+- **projects/** - web server, firewall gateway, NAS, mail server, high availability
+- **tools/** - setup, testing, monitoring, deployment
+- **assets/** - images, templates, downloads
 
 ## Quick Start
-```bash
-# 1. Clone project
-git clone <repo-url> linux-engineer-training
-cd linux-engineer-training
 
-# 2. Setup lab environment
+Dari root repo: `cd Linux` lalu jalankan perintah di bawah (atau gunakan path `Linux/...`).
+
+Dari dalam folder Linux:
+```bash
+# 1. Setup lab environment
 ./scripts/setup-lab.sh
 
-# 3. Start Module 1
+# 2. Start Module 1
 cd modules/01-fundamentals
 cat README.md
 
-# 4. Track progress
+# 3. Track progress
 ./scripts/progress-tracker.sh
+```
+
+Vagrant lab environment:
+```bash
+cd Linux/labs/lab-environment
+vagrant up
 ```
 
 ## Estimasi Waktu
