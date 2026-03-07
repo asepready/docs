@@ -79,5 +79,13 @@ vagrant up
 
 ---
 
+## Kesesuaian dengan Industri (Industry Readiness)
+
+Repository ini dirancang sebagai fondasi untuk peran **Linux Engineer** dan **BSD Engineer**. Agar pembelajaran benar-benar memenuhi ekspektasi industri, selesaikan semua modul, lab, dan proyek; gunakan **checklist kesiapan** per track; dan pertimbangkan **sertifikasi** (LPI, RHCSA, LFCS, LPI BSD) serta pengalaman nyata (magang, proyek).
+
+Detail: **[INDUSTRY-READINESS.md](INDUSTRY-READINESS.md)**.
+
+---
+
 ## Lisensi
 MIT License

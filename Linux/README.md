@@ -59,6 +59,10 @@ vagrant up
 - Commitment: 10-15 jam/minggu
 - Level: Fundamental → Intermediate → Advanced
 
+## Kesiapan Industri
+
+Selesaikan semua modul, lab, proyek, dan capstone; gunakan **[assessments/readiness-checklist.md](assessments/readiness-checklist.md)** untuk menilai kesiapan. Pertimbangkan sertifikasi **LFCS**, **RHCSA**, atau **LPIC-1**; siapkan portfolio dengan panduan **[docs/career-portfolio-guide.md](docs/career-portfolio-guide.md)**. Lihat **[ROADMAP.md](ROADMAP.md)** untuk timeline dan **[INDUSTRY-READINESS.md](../INDUSTRY-READINESS.md)** (root) untuk panduan lengkap.
+
 ## Contact
 - Email: your-email@example.com
 - GitHub: your-username

@@ -35,5 +35,9 @@ cd BSD/labs/lab-environment
 vagrant up
 ```
 
+## Kesiapan Industri
+
+Selesaikan semua modul, lab, dan proyek; gunakan **[assessments/readiness-checklist.md](assessments/readiness-checklist.md)** untuk menilai kesiapan. Pertimbangkan sertifikasi **LPI BSD Specialist (702-100)**. Lihat **[ROADMAP.md](ROADMAP.md)** untuk timeline dan **[INDUSTRY-READINESS.md](../INDUSTRY-READINESS.md)** (root) untuk panduan lengkap.
+
 ## Lisensi
-MIT License
+BSD 3-Clause License (lihat [LICENSE](LICENSE))
