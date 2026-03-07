@@ -1,0 +1,12 @@
+# systemd unit - contoh service
+# Simpan di /etc/systemd/system/example.service
+# [Unit]
+# Description=Example Service
+# After=network.target
+# [Service]
+# Type=simple
+# ExecStart=/usr/bin/myapp
+# Restart=on-failure
+# [Install]
+# WantedBy=multi-user.target
+# systemctl daemon-reload; systemctl enable --now example

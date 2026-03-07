@@ -1,0 +1,36 @@
+# Logs
+*.log
+logs/
+
+# Sensitive
+*.pem
+*.key
+secrets/
+.env
+credentials/
+
+# Temporary
+*.tmp
+*.bak
+temp/
+cache/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Lab specific
+*.qcow2
+*.vmdk
+vagrant/.vagrant/
+
+# Generated reports
+reports/*.html
+reports/*.xml
+!reports/.gitkeep

@@ -1,0 +1,13 @@
+# Netplan - Static IP (Ubuntu)
+# Simpan di /etc/netplan/99-config.yaml
+# network:
+#   version: 2
+#   ethernets:
+#     ens33:
+#       addresses: [192.168.1.10/24]
+#       routes:
+#         - to: default
+#           via: 192.168.1.1
+#       nameservers:
+#         addresses: [8.8.8.8, 1.1.1.1]
+# Jalankan: sudo netplan apply

@@ -1,0 +1,3 @@
+<!-- firewalld zone public - allow ssh, http, https -->
+<!-- firewall-cmd --permanent --zone=public --add-service=ssh,http,https -->
+<!-- firewall-cmd --reload -->

@@ -1,0 +1,17 @@
+# -*- mode: ruby -*-
+# Vagrantfile - Linux Engineer Training Lab Environment
+# Ubuntu Server atau Rocky Linux
+
+Vagrant.configure("2") do |config|
+  config.vm.define "linux-lab" do |node|
+    # Ubuntu 22.04 LTS
+    node.vm.box = "ubuntu/jammy64"
+    # Atau Rocky: node.vm.box = "rockylinux/9"
+    node.vm.hostname = "linux-lab.local"
+    node.vm.network "private_network", type: "dhcp"
+    node.vm.provider "virtualbox" do |vb|
+      vb.memory = "1024"
+      vb.cpus = 2
+    end
+  end
+end
