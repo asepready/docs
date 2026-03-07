@@ -1,0 +1,4 @@
+# syslog.conf - Web server
+# nginx, php-fpm, mysql logs
+*.*     /var/log/all.log
+*.err   /var/log/error.log

@@ -1,0 +1,3 @@
+# ssh_config - Client
+# Host *
+#   IdentityFile ~/.ssh/id_ed25519

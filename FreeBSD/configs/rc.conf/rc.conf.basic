@@ -1,0 +1,5 @@
+# rc.conf - Basic
+hostname="bsd-lab.local"
+ifconfig_vtnet0="DHCP"
+sshd_enable="YES"
+ntpd_enable="YES"

@@ -1,0 +1,4 @@
+# syslog.conf - Security
+# auth, authpriv, security
+auth.*   /var/log/auth.log
+security.* /var/log/security.log

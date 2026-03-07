@@ -1,0 +1,3 @@
+# rc.conf - Mail server
+# postfix_enable="YES" atau sendmail_enable="YES"
+# dovecot_enable="YES"

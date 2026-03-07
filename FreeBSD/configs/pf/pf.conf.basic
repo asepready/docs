@@ -1,0 +1,8 @@
+# PF Configuration - Basic
+# Sesuaikan interface dan network
+ext_if = "vtnet0"
+set skip on lo0
+block in all
+pass out quick on $ext_if all keep state
+pass in quick on $ext_if proto tcp to any port 22 keep state
+pass in quick inet proto icmp all icmp-type echoreq keep state

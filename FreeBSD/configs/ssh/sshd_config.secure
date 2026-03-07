@@ -1,0 +1,4 @@
+# sshd_config - Secure
+# PermitRootLogin no
+# PasswordAuthentication no (gunakan key)
+# MaxAuthTries 3

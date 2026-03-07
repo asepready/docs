@@ -1,0 +1,4 @@
+# syslog.conf - Basic
+*.*     /var/log/all.log
+*.err   /var/log/error.log
+mail.*  /var/log/maillog

@@ -1,0 +1,3 @@
+# rc.conf - Database server
+mysql_enable="YES"
+# postgresql_enable="YES"

@@ -1,0 +1,8 @@
+# jail.conf - Basic
+# myjail {
+#   host.hostname = "jail.local";
+#   path = "/usr/jails/myjail";
+#   ip4.addr = "192.168.1.10";
+#   exec.start = "/bin/sh /etc/rc";
+#   exec.stop = "/bin/sh /etc/rc.shutdown";
+# }

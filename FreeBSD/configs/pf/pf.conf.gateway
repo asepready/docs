@@ -1,0 +1,6 @@
+# PF Configuration - Gateway
+# NAT dan forward untuk jaringan internal
+ext_if = "vtnet0"
+int_if = "vtnet1"
+# nat on $ext_if from $int_if:network to any -> ($ext_if)
+# pass in on $int_if from any to any keep state

@@ -1,0 +1,2 @@
+# jail.conf - Database jail
+# path, ip, exec.start untuk mysql/postgresql

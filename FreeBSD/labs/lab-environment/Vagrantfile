@@ -1,0 +1,16 @@
+# -*- mode: ruby -*-
+# Vagrantfile - BSD Engineer Training Lab Environment
+# Sesuaikan box dan provider dengan kebutuhan (FreeBSD box)
+
+Vagrant.configure("2") do |config|
+  # config.vm.box = "freebsd/FreeBSD-14.0"
+  # config.vm.network "private_network", type: "dhcp"
+  # config.vm.provider "virtualbox" do |vb|
+  #   vb.memory = "1024"
+  #   vb.cpus = 2
+  # end
+  config.vm.define "bsd-lab" do |node|
+    node.vm.box = "freebsd/FreeBSD-14.0"
+    node.vm.hostname = "bsd-lab.local"
+  end
+end

@@ -1,0 +1,4 @@
+# rc.conf - Firewall gateway
+gateway_enable="YES"
+pf_enable="YES"
+pflog_enable="YES"

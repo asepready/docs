@@ -1,0 +1,2 @@
+# my.cnf - Secure
+# bind-address, ssl, local_infile=0

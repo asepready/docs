@@ -1,0 +1,4 @@
+# nginx.conf - SSL (fragment)
+# listen 443 ssl;
+# ssl_certificate /path/to/cert.pem;
+# ssl_certificate_key /path/to/key.pem;

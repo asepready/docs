@@ -1,0 +1,4 @@
+# my.cnf - Basic
+[mysqld]
+datadir=/var/db/mysql
+socket=/var/run/mysql/mysql.sock

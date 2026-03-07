@@ -1,0 +1,4 @@
+# nginx.conf - Basic (fragment)
+# worker_processes 1;
+# events { worker_connections 1024; }
+# http { include mime.types; server { listen 80; root /usr/local/www/nginx; } }

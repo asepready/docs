@@ -1,0 +1,2 @@
+# jail.conf - Web server jail
+# path, ip, exec.start untuk nginx/php

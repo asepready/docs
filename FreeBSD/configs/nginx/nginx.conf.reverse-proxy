@@ -1,0 +1,3 @@
+# nginx.conf - Reverse proxy
+# proxy_pass http://backend;
+# proxy_set_header Host $host;

@@ -1,0 +1,38 @@
+# PF Configuration for Web Server
+
+ext_if = "vtnet0"
+web_ports = "{ 80, 443 }"
+
+table <bruteforce> persist
+
+set block-policy return
+set loginterface $ext_if
+set skip on lo0
+
+# NAT
+nat on $ext_if from 192.168.1.0/24 to any -> ($ext_if)
+
+# Block all by default
+block in all
+block out all
+
+# Allow loopback
+pass quick on lo0 all
+
+# Allow established connections
+pass out quick on $ext_if inet all keep state
+pass in quick on $ext_if inet all keep state
+
+# Allow HTTP/HTTPS
+pass in quick on $ext_if proto tcp to any port $web_ports flags S/SA keep state
+
+# Allow SSH with protection
+block in quick on $ext_if from <bruteforce> to any port 22
+pass in on $ext_if proto tcp to any port 22 flags S/SA keep state \
+    (max-src-conn 3, max-src-conn-rate 5/10, overload <bruteforce> flush global)
+
+# Allow ICMP
+pass in inet proto icmp all icmp-type echoreq keep state
+
+# Logging
+block log (all) in quick on $ext_if from any to any

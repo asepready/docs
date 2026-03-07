@@ -1,0 +1,7 @@
+# rc.conf - Web server
+hostname="web.local"
+ifconfig_vtnet0="DHCP"
+sshd_enable="YES"
+nginx_enable="YES"
+mysql_enable="YES"
+pf_enable="YES"
