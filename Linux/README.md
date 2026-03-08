@@ -39,6 +39,8 @@ Struktur di bawah ini mengacu pada isi folder `Linux/` di repository.
 
 ## Setup Environment Lab
 
+**Panduan tunggal (semua modul):** [ENVIRONMENT-LAB.md](ENVIRONMENT-LAB.md).
+
 Lingkungan lab bisa disiapkan dengan **Vagrant (VM)** atau di **mesin Linux** yang sudah ada.
 
 ### Prasyarat
@@ -103,19 +105,23 @@ which vim htop tree jq; ss -tulpn | head -3
 
 ### Quick Start (setelah environment siap)
 
-Dari **folder Linux** (di dalam VM atau mesin Linux):
+Dari **folder Linux** (di VM: `cd /linux-repo`; di host: `cd /path/to/Linux`):
 
 ```bash
 # 1. Mulai Modul 1
 cd modules/01-fundamentals
 cat README.md
+cat MULAI-PRAKTIK.md
 
 # 2. Jalankan lab pertama
-cat labs/lab-1.1-filesystem.md
+cat modules/01-fundamentals/labs/lab-1.1-filesystem.md
+# Validasi (dari root repo): bash scripts/validate-lab1.1.sh
 
 # 3. Lacak progress
 ./scripts/progress-tracker.sh
 ```
+
+Modul lain: `cd modules/02-sysadmin`, `modules/03-scripting`, dll. Lihat [ENVIRONMENT-LAB.md](ENVIRONMENT-LAB.md).
 
 ## Estimasi Waktu
 - Total: 12-16 Minggu

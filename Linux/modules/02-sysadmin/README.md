@@ -1,5 +1,7 @@
 # Module 2: System Administration Core
 
+Lingkungan praktek (WSL / Vagrant / Linux): **[ENVIRONMENT-LAB.md](../../ENVIRONMENT-LAB.md)** — satu environment untuk semua modul.
+
 ## Duration: 2-3 Weeks
 
 ## Learning Objectives

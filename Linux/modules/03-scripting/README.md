@@ -1,5 +1,7 @@
 # Module 3: Shell Scripting & Automation
 
+Lingkungan praktek (WSL / Vagrant / Linux): **[ENVIRONMENT-LAB.md](../../ENVIRONMENT-LAB.md)** — satu environment untuk semua modul.
+
 ## Duration: 2 Weeks
 
 ## Learning Objectives
