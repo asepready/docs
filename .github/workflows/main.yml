@@ -1,0 +1,31 @@
+# Otomasi saat push/merge ke main
+# Trigger: push ke main, pull_request menuju main
+
+name: On main
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  check:
+    name: Check main
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Status
+        run: |
+          echo "Branch: ${{ github.ref_name }}"
+          echo "Commit: ${{ github.sha }}"
+          git status --short
+
+      - name: List Linux lab files (optional)
+        run: |
+          if [ -d Linux ]; then
+            echo "Linux folder present"
+            find Linux -maxdepth 3 -type f -name "*.md" 2>/dev/null | head -20
+          fi
