@@ -1,7 +1,9 @@
 # Lab 1.1: Filesystem Navigation
 
 ## Objective
-Memahami struktur direktori Linux dan navigasi efisien
+Memahami struktur direktori Linux dan navigasi efisien.
+
+**LPIC-1 (101):** Topic 103.1 (command line), 103.3 (file management), 104.3 (mount/identify), 104.6 (links), 104.7 (FHS, find, locate). Lihat [LPIC-OBJECTIVES-MAPPING.md](../../../assessments/certifications/LPIC-OBJECTIVES-MAPPING.md).
 
 ## Tasks
 

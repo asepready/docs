@@ -3,6 +3,8 @@
 Panduan urutan belajar menggunakan seluruh materi di folder **Linux/**.  
 Estimasi total: **12–16 minggu**, 10–15 jam/minggu.
 
+Materi diselaraskan dengan standar **LPIC-1**, **LPIC-2**, dan **LPIC-3** (LPI). Pemetaan ke objectives: **[assessments/certifications/LPIC-OBJECTIVES-MAPPING.md](assessments/certifications/LPIC-OBJECTIVES-MAPPING.md)**.
+
 ---
 
 ## Ringkasan 8 Modul Utama
@@ -107,7 +109,7 @@ Estimasi total: **12–16 minggu**, 10–15 jam/minggu.
 - **Deliverables**: Project setup, deployment, hardening, automation, monitoring, dokumentasi, presentasi
 - **Checklist**: [labs/lab-checklist.md](labs/lab-checklist.md) (Module 8)
 - **Karier**: [docs/career-portfolio-guide.md](docs/career-portfolio-guide.md)
-- **Sertifikasi**: [assessments/certifications](assessments/certifications) (LPIC-1, RHCSA, LFCS)
+- **Sertifikasi**: [assessments/certifications](assessments/certifications) — [LPIC-OBJECTIVES-MAPPING.md](assessments/certifications/LPIC-OBJECTIVES-MAPPING.md) (LPIC-1/2/3), [lpi-linux-prep.md](assessments/certifications/lpi-linux-prep.md), RHCSA, LFCS
 
 ---
 

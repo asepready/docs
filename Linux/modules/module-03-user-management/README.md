@@ -3,6 +3,9 @@
 ## Durasi
 4 jam
 
+## LPIC-1 Alignment (Objectives)
+Modul ini mencakup **Exam 101** 104.5 (permission & ownership), **Exam 102** 107.1 (user/group accounts), 110.1 (security administration — sudo, passwd, chage). Lihat [LPIC-OBJECTIVES-MAPPING.md](../../assessments/certifications/LPIC-OBJECTIVES-MAPPING.md).
+
 ## Tujuan Pembelajaran
 - Administrasi user dan group (useradd, usermod, groupadd)
 - Permission, umask, ACL

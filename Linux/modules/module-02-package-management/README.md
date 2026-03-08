@@ -3,13 +3,13 @@
 ## Durasi
 4 jam
 
+## LPIC-1 Alignment (Objectives)
+Modul ini mencakup **Exam 101** Topic 102 (Linux Installation and Package Management): 102.3 (shared libraries), 102.4 (Debian/apt), 102.5 (RPM/YUM/DNF/Zypper). Lihat [LPIC-OBJECTIVES-MAPPING.md](../../assessments/certifications/LPIC-OBJECTIVES-MAPPING.md).
+
 ## Tujuan Pembelajaran
 - Menggunakan apt (Debian/Ubuntu) dan dnf (RHEL/CentOS)
 - Repository, update, install, remove
 - Snap/flatpak (opsional)
-
-## Prasyarat
-- Modul 1 selesai (sistem Linux terinstal)
 
 ## Materi
 1. [Dasar apt](01-apt-basics.md)
