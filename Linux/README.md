@@ -37,27 +37,84 @@ Struktur di bawah ini mengacu pada isi folder `Linux/` di repository.
 
 ---
 
-## Quick Start
+## Setup Environment Lab
 
-Dari root repo: `cd Linux` lalu jalankan perintah di bawah (atau gunakan path `Linux/...`).
+Lingkungan lab bisa disiapkan dengan **Vagrant (VM)** atau di **mesin Linux** yang sudah ada.
 
-Dari dalam folder Linux:
+### Prasyarat
+
+| Opsi | Kebutuhan |
+|------|-----------|
+| **Vagrant** (Windows/Mac/Linux) | [Vagrant](https://www.vagrantup.com/), [VirtualBox](https://www.virtualbox.org/) (atau provider lain), 2 GB RAM, 10 GB disk |
+| **Linux langsung** | Ubuntu 22.04+, Rocky 9+, atau distro serupa (Debian/RHEL family) |
+
+### Opsi A: Vagrant + VirtualBox (Windows, Linux, *BSD)
+
+- **Host:** Windows, Linux, atau *BSD (FreeBSD)  
+- **Guest:** Ubuntu 22.04 LTS (default) atau Rocky Linux 9  
+- **Provider:** VirtualBox  
+
+Panduan lengkap instalasi per platform: **[labs/lab-environment/README.md](labs/lab-environment/README.md)**.
+
+1. Dari **root repo** (atau dari folder `Linux`):
+   ```bash
+   cd Linux/labs/lab-environment
+   vagrant up              # Ubuntu (default)
+   vagrant up rocky        # atau Rocky Linux
+   ```
+2. Masuk ke VM:
+   ```bash
+   vagrant ssh             # Ubuntu
+   vagrant ssh rocky       # jika pakai Rocky
+   ```
+3. Di dalam VM, materi repo ada di `/linux-repo`. Jalankan setup:
+   ```bash
+   cd /linux-repo
+   sudo ./scripts/setup-lab.sh
+   ```
+
+### Opsi B: Mesin Linux yang sudah ada
+
+Jalankan dari **folder Linux** di mesin Linux (perlu root):
+
 ```bash
-# 1. Setup lab environment
-./scripts/setup-lab.sh
+cd Linux
+sudo ./scripts/setup-lab.sh
+```
 
-# 2. Start Module 1
+Script akan:
+- Menginstal paket: `git`, `vim`, `htop`, `tree`, `jq`, `net-tools`, `dnsutils`/`bind-utils`, `tcpdump`, `sysstat`, `iotop`, `lynis`, `aide`, `auditd`
+- Membuat user `labuser` (sudo) dan direktori `~/lab`
+- Membuat direktori sistem lab: `/lab/projects`, `/lab/backups`, `/lab/logs`, `/lab/configs`, `/lab/scripts`
+- Mengatur sudo logging dan alias bash untuk lab
+
+### Verifikasi
+
+Setelah setup (di dalam VM atau mesin Linux):
+
+```bash
+# Cek user & direktori lab
+id labuser
+ls -la /home/labuser/lab
+
+# Cek tools
+which vim htop tree jq; ss -tulpn | head -3
+```
+
+### Quick Start (setelah environment siap)
+
+Dari **folder Linux** (di dalam VM atau mesin Linux):
+
+```bash
+# 1. Mulai Modul 1
 cd modules/01-fundamentals
 cat README.md
 
-# 3. Track progress
-./scripts/progress-tracker.sh
-```
+# 2. Jalankan lab pertama
+cat labs/lab-1.1-filesystem.md
 
-Vagrant lab environment:
-```bash
-cd Linux/labs/lab-environment
-vagrant up
+# 3. Lacak progress
+./scripts/progress-tracker.sh
 ```
 
 ## Estimasi Waktu
