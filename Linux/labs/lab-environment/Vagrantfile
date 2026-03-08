@@ -1,17 +1,44 @@
 # -*- mode: ruby -*-
-# Vagrantfile - Linux Engineer Training Lab Environment
-# Ubuntu Server atau Rocky Linux
+# Lab Environment: Linux Engineer Training
+#
+# Host:    Windows / Linux / *BSD (FreeBSD)
+# Guest:   Ubuntu 22.04 LTS atau Rocky Linux 9
+# Provider: VirtualBox only
+#
+# Usage:
+#   vagrant up           # start Ubuntu (default/primary)
+#   vagrant up rocky     # start Rocky Linux
+#   vagrant ssh          # SSH to primary (ubuntu); or vagrant ssh rocky
 
 Vagrant.configure("2") do |config|
-  config.vm.define "linux-lab" do |node|
-    # Ubuntu 22.04 LTS
-    node.vm.box = "ubuntu/jammy64"
-    # Atau Rocky: node.vm.box = "rockylinux/9"
-    node.vm.hostname = "linux-lab.local"
-    node.vm.network "private_network", type: "dhcp"
-    node.vm.provider "virtualbox" do |vb|
-      vb.memory = "1024"
-      vb.cpus = 2
+  guests = {
+    "ubuntu" => {
+      box: "ubuntu/jammy64",
+      hostname: "linux-lab-ubuntu.local"
+    },
+    "rocky" => {
+      box: "rockylinux/9",
+      hostname: "linux-lab-rocky.local"
+    }
+  }
+
+  guests.each do |name, opts|
+    config.vm.define name, primary: (name == "ubuntu") do |node|
+      node.vm.box = opts[:box]
+      node.vm.hostname = opts[:hostname]
+      node.vm.network "private_network", type: "dhcp"
+
+      # Sync folder Linux ke VM (dari labs/lab-environment, ../.. = Linux)
+      # Di dalam VM: cd /linux-repo lalu sudo ./scripts/setup-lab.sh
+      node.vm.synced_folder "../..", "/linux-repo", type: "virtualbox"
+
+      node.vm.provider "virtualbox" do |vb|
+        vb.name = "linux-lab-#{name}"
+        vb.memory = "1024"
+        vb.cpus = 2
+        vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+        vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
+      end
     end
   end
 end
