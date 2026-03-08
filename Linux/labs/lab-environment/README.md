@@ -149,12 +149,30 @@ Jika muncul `sudo: unable to execute ./scripts/setup-lab.sh: No such file or dir
 - Pastikan `vagrant up` dijalankan dari **Linux/labs/lab-environment** (bukan dari Linux/labs)
 - Jalankan dengan bash eksplisit: `sudo bash /linux-repo/scripts/setup-lab.sh`
 
-Lalu mulai praktek (misalnya Modul 1):
+Lalu mulai praktek. **Satu environment ini dipakai untuk semua modul.**
+
+### Praktek per modul
+
+| Modul | Path di VM | Keterangan |
+|-------|------------|------------|
+| 1 – Fundamentals | `cd /linux-repo/modules/01-fundamentals` | CLI, filesystem, user, permission |
+| 2 – System Admin | `cd /linux-repo/modules/02-sysadmin` | systemd, process, LVM, log, package |
+| 3 – Scripting | `cd /linux-repo/modules/03-scripting` | Bash, cron, automation |
+| 4 – Networking | `cd /linux-repo/modules/04-networking` | iproute2, firewall, DNS |
+| 5 – Security | `cd /linux-repo/modules/05-security` | SELinux, auditd, SSH hardening |
+| 6 – Cloud | `cd /linux-repo/modules/06-cloud` | Docker, Kubernetes dasar |
+| 7 – Troubleshooting | `cd /linux-repo/modules/07-troubleshooting` | Disk, service, performance |
+| 8 – Capstone | `cd /linux-repo/modules/08-capstone` | Project akhir |
+
+Contoh mulai Modul 1:
 
 ```bash
 cd /linux-repo/modules/01-fundamentals
 cat README.md
+cat MULAI-PRAKTIK.md
 ```
+
+Panduan tunggal lingkungan lab untuk semua modul: **[ENVIRONMENT-LAB.md](../../ENVIRONMENT-LAB.md)** (dari root Linux).
 
 ### Perintah Vagrant berguna
 
