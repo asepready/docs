@@ -115,7 +115,7 @@ cd Linux/labs/lab-environment
 | `vagrant up` | **Ubuntu** 22.04 | Default (primary) |
 | `vagrant up rocky` | **Rocky Linux** 9 | Guest alternatif |
 
-Box akan diunduh sekali saat pertama kali (ubuntu/jammy64 atau rockylinux/9). Provider: **VirtualBox**.
+Box akan diunduh sekali saat pertama kali (ubuntu/jammy64 atau generic/rocky9). Provider: **VirtualBox**.
 
 ```bash
 # Mulai Ubuntu (default)
