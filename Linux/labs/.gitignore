@@ -1,0 +1,40 @@
+# Vagrant (state, keys, cache — jangan di-commit)
+.vagrant/
+vagrant/
+*.box
+
+# Logs
+*.log
+logs/
+
+# Sensitive
+*.pem
+*.key
+secrets/
+.env
+credentials/
+
+# Temporary
+*.tmp
+*.bak
+temp/
+cache/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Lab specific (disk images, VM)
+*.qcow2
+*.vmdk
+
+# Generated reports
+reports/*.html
+reports/*.xml
+!reports/.gitkeep
