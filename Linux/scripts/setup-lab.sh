@@ -1,8 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #===============================================================================
 # Script: setup-lab.sh
 # Description: Setup Linux Engineer learning lab environment
-# Usage: sudo ./scripts/setup-lab.sh
+# Supported: Ubuntu/Debian (apt), Rocky Linux / RHEL / CentOS / AlmaLinux (dnf)
+# Usage: sudo ./scripts/setup-lab.sh  or  sudo bash /linux-repo/scripts/setup-lab.sh
 #===============================================================================
 
 set -euo pipefail
@@ -29,6 +30,15 @@ warn() { log "${YELLOW}WARN${NC}" "$@"; }
 error() { log "${RED}ERROR${NC}" "$@"; }
 success() { log "${GREEN}SUCCESS${NC}" "$@"; }
 
+# Progress: [Step X/Y] message
+readonly TOTAL_STEPS=6
+step_progress() {
+    local current="$1"
+    local message="$2"
+    echo -e "${GREEN}[${current}/${TOTAL_STEPS}]${NC} ${message}"
+    log "INFO" "[Step ${current}/${TOTAL_STEPS}] $message"
+}
+
 # Check root privilege
 check_root() {
     if [[ $EUID -ne 0 ]]; then
@@ -37,9 +47,27 @@ check_root() {
     fi
 }
 
-# Install required packages
+# Enable EPEL on RHEL/Rocky/CentOS/Alma (for lynis etc.)
+enable_epel_if_needed() {
+    [[ ! -f /etc/os-release ]] && return 0
+    local id version_id
+    id=$(grep -E ^ID= /etc/os-release | cut -d= -f2 | tr -d '"')
+    version_id=$(grep -E ^VERSION_ID= /etc/os-release | cut -d= -f2 | tr -d '"')
+    if [[ "$id" == "rhel" || "$id" == "rocky" || "$id" == "centos" || "$id" == "almalinux" ]]; then
+        if ! rpm -q epel-release &>/dev/null; then
+            info "Enabling EPEL repository (Rocky/RHEL/CentOS/Alma)..."
+            if ! dnf install -y -q epel-release 2>/dev/null; then
+                # Fallback: install EPEL from Fedora (e.g. Rocky 9)
+                local ver="${version_id%%.*}"
+                dnf install -y -q "https://dl.fedoraproject.org/pub/epel/epel-release-latest-${ver}.noarch.rpm" 2>/dev/null || true
+            fi
+        fi
+    fi
+}
+
+# Install required packages (Ubuntu/Debian and Rocky/RHEL/CentOS/Alma)
 install_packages() {
-    info "Installing required packages..."
+    step_progress 2 "Installing required packages..."
     
     if command -v apt &> /dev/null; then
         apt update -qq
@@ -49,13 +77,17 @@ install_packages() {
             apache2-utils sysstat iotop \
             lynis aide auditd
     elif command -v dnf &> /dev/null; then
+        # Rocky Linux, RHEL, CentOS, AlmaLinux, Fedora
+        enable_epel_if_needed
         dnf install -y -q \
-            git vim htop tree jq \
+            git vim-enhanced htop tree jq \
             net-tools bind-utils tcpdump \
             httpd-tools sysstat iotop \
-            lynis aide audit
+            aide audit
+        # lynis from EPEL (optional if EPEL not available)
+        dnf install -y -q lynis 2>/dev/null || warn "lynis not installed (EPEL may be unavailable)"
     else
-        error "Package manager not supported"
+        error "Package manager not supported (need apt or dnf)"
         exit 1
     fi
     
@@ -64,6 +96,7 @@ install_packages() {
 
 # Create lab user
 create_lab_user() {
+    step_progress 3 "Creating lab user and home structure..."
     local username="labuser"
     local home_dir="/home/${username}"
     
@@ -91,7 +124,7 @@ create_lab_user() {
 
 # Setup lab directories
 setup_lab_dirs() {
-    info "Setting up lab directories..."
+    step_progress 4 "Setting up lab directories (/lab/...)..."
     
     local lab_dirs=(
         "/lab/projects"
@@ -114,7 +147,7 @@ setup_lab_dirs() {
 
 # Configure sudo with logging
 configure_sudo() {
-    info "Configuring sudo logging..."
+    step_progress 5 "Configuring sudo logging..."
     
     local sudo_config="/etc/sudoers.d/lab-logging"
     
@@ -136,7 +169,7 @@ EOF
 
 # Setup bash aliases
 setup_aliases() {
-    info "Setting up bash aliases..."
+    step_progress 6 "Setting up bash aliases..."
     
     local alias_file="/etc/profile.d/lab-aliases.sh"
     
@@ -165,11 +198,13 @@ EOF
 
 # Main function
 main() {
+    echo ""
     echo "========================================"
     echo "  Linux Engineer Lab Setup"
     echo "========================================"
     echo ""
     
+    step_progress 1 "Checking root privilege..."
     check_root
     install_packages
     create_lab_user
@@ -183,7 +218,7 @@ main() {
     echo "Next steps:"
     echo "1. Logout and login as labuser"
     echo "2. Run: cd ~/lab && ls -la"
-    echo "3. Start Module 1: cd linux-engineer-training/modules/01-fundamentals"
+    echo "3. Start Module 1: cd /linux-repo/modules/01-fundamentals"
     echo ""
 }
 

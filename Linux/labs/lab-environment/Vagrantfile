@@ -17,7 +17,8 @@ Vagrant.configure("2") do |config|
       hostname: "linux-lab-ubuntu.local"
     },
     "rocky" => {
-      box: "rockylinux/9",
+      # rockylinux/9 returns 404 on Vagrant Cloud; use generic/rocky9 (VirtualBox)
+      box: "generic/rocky9",
       hostname: "linux-lab-rocky.local"
     }
   }
