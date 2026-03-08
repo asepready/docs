@@ -3,6 +3,17 @@
 ## Durasi
 4 jam (2 jam teori, 2 jam praktik)
 
+## LPIC-1 Alignment (Objectives)
+Modul ini mencakup **Exam 101** Topic 101 (System Architecture) dan Topic 102 (Installation & Package Management — disk layout, boot manager). Pemetaan lengkap: [LPIC-OBJECTIVES-MAPPING.md](../../assessments/certifications/LPIC-OBJECTIVES-MAPPING.md).
+
+| LPIC-1 | Objective | Cakupan |
+|--------|-----------|---------|
+| 101.1 | Hardware settings (udev, /proc, /sys) | Arsitektur & perangkat |
+| 101.2 | Boot the system (systemd, journalctl, dmesg) | Proses boot |
+| 101.3 | Runlevels/targets, shutdown/reboot | systemctl |
+| 102.1 | Design hard disk layout (LVM, /boot, swap) | Partisi saat instalasi |
+| 102.2 | Boot manager (GRUB 2) | Bootloader |
+
 ## Tujuan Pembelajaran
 - Memahami sejarah dan filosofi Linux serta distribusi
 - Membedakan distro utama (Debian/Ubuntu vs RHEL/CentOS)
