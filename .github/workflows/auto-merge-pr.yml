@@ -1,0 +1,41 @@
+# Auto-merge PR ke main setelah semua pengecekan lulus
+# Trigger: setelah workflow "On main" selesai sukses untuk event pull_request
+
+name: Auto-merge PR to main
+
+on:
+  workflow_run:
+    workflows: ["On main"]
+    types:
+      - completed
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  merge:
+    name: Merge PR
+    if: >
+      github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Merge pull request
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prs = context.payload.workflow_run.pull_requests;
+            if (!prs || prs.length === 0) {
+              core.warning('No pull request in workflow_run payload, skip merge');
+              return;
+            }
+            const prNumber = prs[0].number;
+            await github.rest.pulls.merge({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: prNumber,
+              merge_method: 'merge'
+            });
+            core.notice(`Merged PR #${prNumber} into main`);
