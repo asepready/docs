@@ -1,0 +1,38 @@
+# Push otomatis ke main: saat push ke branch "commit", merge ke main dan push
+# Sesuaikan branches: bila ingin branch lain, tambahkan di bawah (mis. develop)
+
+name: Auto push to main
+
+on:
+  push:
+    branches:
+      - commit
+    # Tambah branch lain jika perlu:
+    # - develop
+
+permissions:
+  contents: write
+
+jobs:
+  merge-and-push:
+    name: Merge ke main dan push
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Konfigurasi Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Merge ke main dan push
+        run: |
+          BRANCH="${{ github.ref_name }}"
+          git checkout main
+          git pull origin main
+          git merge "origin/$BRANCH" -m "Auto-merge $BRANCH into main"
+          git push origin main

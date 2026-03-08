@@ -30,6 +30,15 @@ warn() { log "${YELLOW}WARN${NC}" "$@"; }
 error() { log "${RED}ERROR${NC}" "$@"; }
 success() { log "${GREEN}SUCCESS${NC}" "$@"; }
 
+# Progress: [Step X/Y] message
+readonly TOTAL_STEPS=6
+step_progress() {
+    local current="$1"
+    local message="$2"
+    echo -e "${GREEN}[${current}/${TOTAL_STEPS}]${NC} ${message}"
+    log "INFO" "[Step ${current}/${TOTAL_STEPS}] $message"
+}
+
 # Check root privilege
 check_root() {
     if [[ $EUID -ne 0 ]]; then
@@ -58,7 +67,7 @@ enable_epel_if_needed() {
 
 # Install required packages (Ubuntu/Debian and Rocky/RHEL/CentOS/Alma)
 install_packages() {
-    info "Installing required packages..."
+    step_progress 2 "Installing required packages..."
     
     if command -v apt &> /dev/null; then
         apt update -qq
@@ -87,6 +96,7 @@ install_packages() {
 
 # Create lab user
 create_lab_user() {
+    step_progress 3 "Creating lab user and home structure..."
     local username="labuser"
     local home_dir="/home/${username}"
     
@@ -114,7 +124,7 @@ create_lab_user() {
 
 # Setup lab directories
 setup_lab_dirs() {
-    info "Setting up lab directories..."
+    step_progress 4 "Setting up lab directories (/lab/...)..."
     
     local lab_dirs=(
         "/lab/projects"
@@ -137,7 +147,7 @@ setup_lab_dirs() {
 
 # Configure sudo with logging
 configure_sudo() {
-    info "Configuring sudo logging..."
+    step_progress 5 "Configuring sudo logging..."
     
     local sudo_config="/etc/sudoers.d/lab-logging"
     
@@ -159,7 +169,7 @@ EOF
 
 # Setup bash aliases
 setup_aliases() {
-    info "Setting up bash aliases..."
+    step_progress 6 "Setting up bash aliases..."
     
     local alias_file="/etc/profile.d/lab-aliases.sh"
     
@@ -188,11 +198,13 @@ EOF
 
 # Main function
 main() {
+    echo ""
     echo "========================================"
     echo "  Linux Engineer Lab Setup"
     echo "========================================"
     echo ""
     
+    step_progress 1 "Checking root privilege..."
     check_root
     install_packages
     create_lab_user
@@ -206,7 +218,7 @@ main() {
     echo "Next steps:"
     echo "1. Logout and login as labuser"
     echo "2. Run: cd ~/lab && ls -la"
-    echo "3. Start Module 1: cd linux-engineer-training/modules/01-fundamentals"
+    echo "3. Start Module 1: cd /linux-repo/modules/01-fundamentals"
     echo ""
 }
 
