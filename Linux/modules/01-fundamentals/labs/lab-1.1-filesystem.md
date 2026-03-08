@@ -26,12 +26,24 @@ touch ~/lab/data/{users.csv,products.json}
 ```
 
 ### Task 3: Navigation Challenge
+Kerjakan tanpa mouse (hanya keyboard + CLI):
+
 ```bash
-# Without using mouse, complete:
-1. Go to /etc, find all files containing "ssh"
-2. Count total files in /var/log
-3. Find largest file in /var/log
-4. Create symlink: ~/lab/conf/latest -> ~/lab/conf/app.conf
+# 1. Ke /etc, cari semua file yang namanya mengandung "ssh"
+cd /etc
+find . -name '*ssh*' -type f
+
+# 2. Hitung total file di /var/log
+find /var/log -type f | wc -l
+
+# 3. Cari file terbesar di /var/log (ukuran dalam byte)
+find /var/log -type f -printf '%s %p\n' 2>/dev/null | sort -n | tail -1
+# alternatif: du -b
+find /var/log -type f -exec du -b {} \; 2>/dev/null | sort -n | tail -1
+
+# 4. Buat symlink: ~/lab/conf/latest -> ~/lab/conf/app.conf
+ln -s ~/lab/conf/app.conf ~/lab/conf/latest
+ls -la ~/lab/conf/
 ```
 
 ## Validation

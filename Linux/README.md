@@ -31,6 +31,12 @@ Struktur di bawah ini mengacu pada isi folder `Linux/` di repository.
 - **tools/** - setup, testing, monitoring, deployment
 - **assets/** - images, templates, downloads
 
+## Mulai Belajar (Jalur Lengkap)
+
+**Panduan urutan belajar dari folder ini**: [LEARNING-PATH.md](LEARNING-PATH.md) — 8 modul (12–16 minggu), dari fundamentals sampai capstone & karier. Mulai dari **Modul 1** [modules/01-fundamentals](modules/01-fundamentals).
+
+---
+
 ## Quick Start
 
 Dari root repo: `cd Linux` lalu jalankan perintah di bawah (atau gunakan path `Linux/...`).
