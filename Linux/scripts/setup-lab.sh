@@ -2,7 +2,8 @@
 #===============================================================================
 # Script: setup-lab.sh
 # Description: Setup Linux Engineer learning lab environment
-# Usage: sudo ./scripts/setup-lab.sh
+# Supported: Ubuntu/Debian (apt), Rocky Linux / RHEL / CentOS / AlmaLinux (dnf)
+# Usage: sudo ./scripts/setup-lab.sh  or  sudo bash /linux-repo/scripts/setup-lab.sh
 #===============================================================================
 
 set -euo pipefail
@@ -37,7 +38,25 @@ check_root() {
     fi
 }
 
-# Install required packages
+# Enable EPEL on RHEL/Rocky/CentOS/Alma (for lynis etc.)
+enable_epel_if_needed() {
+    [[ ! -f /etc/os-release ]] && return 0
+    local id version_id
+    id=$(grep -E ^ID= /etc/os-release | cut -d= -f2 | tr -d '"')
+    version_id=$(grep -E ^VERSION_ID= /etc/os-release | cut -d= -f2 | tr -d '"')
+    if [[ "$id" == "rhel" || "$id" == "rocky" || "$id" == "centos" || "$id" == "almalinux" ]]; then
+        if ! rpm -q epel-release &>/dev/null; then
+            info "Enabling EPEL repository (Rocky/RHEL/CentOS/Alma)..."
+            if ! dnf install -y -q epel-release 2>/dev/null; then
+                # Fallback: install EPEL from Fedora (e.g. Rocky 9)
+                local ver="${version_id%%.*}"
+                dnf install -y -q "https://dl.fedoraproject.org/pub/epel/epel-release-latest-${ver}.noarch.rpm" 2>/dev/null || true
+            fi
+        fi
+    fi
+}
+
+# Install required packages (Ubuntu/Debian and Rocky/RHEL/CentOS/Alma)
 install_packages() {
     info "Installing required packages..."
     
@@ -49,13 +68,17 @@ install_packages() {
             apache2-utils sysstat iotop \
             lynis aide auditd
     elif command -v dnf &> /dev/null; then
+        # Rocky Linux, RHEL, CentOS, AlmaLinux, Fedora
+        enable_epel_if_needed
         dnf install -y -q \
-            git vim htop tree jq \
+            git vim-enhanced htop tree jq \
             net-tools bind-utils tcpdump \
             httpd-tools sysstat iotop \
-            lynis aide audit
+            aide audit
+        # lynis from EPEL (optional if EPEL not available)
+        dnf install -y -q lynis 2>/dev/null || warn "lynis not installed (EPEL may be unavailable)"
     else
-        error "Package manager not supported"
+        error "Package manager not supported (need apt or dnf)"
         exit 1
     fi
     
