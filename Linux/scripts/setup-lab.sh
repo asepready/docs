@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #===============================================================================
 # Script: setup-lab.sh
 # Description: Setup Linux Engineer learning lab environment

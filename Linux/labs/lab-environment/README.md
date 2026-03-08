@@ -144,6 +144,11 @@ cd /linux-repo
 sudo ./scripts/setup-lab.sh
 ```
 
+Jika muncul `sudo: unable to execute ./scripts/setup-lab.sh: No such file or directory`:
+- Cek isi folder: `ls -la /linux-repo` dan `ls -la /linux-repo/scripts`
+- Pastikan `vagrant up` dijalankan dari **Linux/labs/lab-environment** (bukan dari Linux/labs)
+- Jalankan dengan bash eksplisit: `sudo bash /linux-repo/scripts/setup-lab.sh`
+
 Lalu mulai praktek (misalnya Modul 1):
 
 ```bash
@@ -180,6 +185,11 @@ cat README.md
 
 - **FreeBSD: vboxdrv failed**  
   Load module: `sudo kldload vboxdrv`. Jika gagal, cek kompatibilitas kernel dan baca [VirtualBox on FreeBSD](https://wiki.freebsd.org/VirtualBox).
+
+- **"unable to execute ./scripts/setup-lab.sh: No such file or directory"**  
+  (1) Pastikan VM dijalankan dari folder **lab-environment**: `cd Linux/labs/lab-environment` lalu `vagrant up rocky`.  
+  (2) Di dalam VM cek: `ls /linux-repo/scripts/setup-lab.sh`. Jika file ada, jalankan: `sudo bash /linux-repo/scripts/setup-lab.sh`.  
+  (3) Jika `/linux-repo` kosong atau tidak ada, synced folder gagal—restart VM: `vagrant reload rocky`, atau di host pastikan path `C:\docs\Linux` ada.
 
 ---
 
