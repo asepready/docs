@@ -16,6 +16,14 @@
 
 ## Lab
 - [Lab 10: Backup Setup](lab-10-backup-setup.md)
+- Lab umum backup & recovery: [lab-10](../../labs/lab-10/README.md)
 
 ## Evaluasi
 - [Quiz 10](quiz-10.md)
+- Quiz LPIC-style terkait: [Quiz 10 Backup](../../assessments/quizzes/quiz-10-backup.md)
+
+## Proyek Terkait
+
+- [Proyek 1: Web Server Production](../../projects/project-01-web-server/README.md) — backup konfigurasi & data web.
+- [Proyek 3: NAS Storage](../../projects/project-03-nas-storage/README.md) — backup share dan snapshot.
+- [Proyek 5: High Availability](../../projects/project-05-high-availability/README.md) — strategi backup pada lingkungan HA.

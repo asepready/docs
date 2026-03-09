@@ -19,6 +19,39 @@ Modul ini mencakup **Exam 101** Topic 101 (System Architecture) dan Topic 102 (I
 - Membedakan distro utama (Debian/Ubuntu vs RHEL/CentOS)
 - Melakukan instalasi Ubuntu Server atau Rocky Linux
 
+## Ringkasan Konsep & Contoh Perintah
+
+### Arsitektur sistem & perangkat
+
+- Konsep:
+  - Peran kernel, userspace, dan shell.
+  - Representasi hardware di `/proc`, `/sys`, dan `/dev`.
+  - Identifikasi perangkat penyimpanan, jaringan, dan USB.
+- Contoh perintah:
+  - Info perangkat: `lscpu`, `lsblk`, `lspci`, `lsusb`
+  - Pseudo filesystem: `ls /proc`, `ls /sys`
+
+### Instalasi & layout disk (Exam 101 — 102.1)
+
+- Konsep:
+  - Perbedaan MBR vs GPT (gambaran singkat).
+  - Partisi penting: `/`, `/boot`, `swap`, partisi data.
+  - Manfaat LVM untuk fleksibilitas kapasitas.
+- Contoh perintah (pasca-instalasi, untuk verifikasi):
+  - Layout disk: `lsblk -f`, `sudo fdisk -l`, `sudo parted -l`
+  - Volume logis: `sudo pvs`, `sudo vgs`, `sudo lvs`
+
+### Bootloader & proses boot (Exam 101 — 101.2, 102.2)
+
+- Konsep:
+  - Urutan: firmware (BIOS/UEFI) → bootloader (GRUB 2) → kernel → `init`/`systemd`.
+  - Lokasi konfigurasi bootloader dan kernel parameter dasar.
+  - Logging awal boot dan pengecekan masalah boot.
+- Contoh perintah:
+  - Log boot: `journalctl -b`, `dmesg | less`
+  - Status layanan dasar: `systemctl status`, `systemctl list-units --type=service`
+  - File konfigurasi (awareness): `/etc/default/grub`, `/boot/grub/grub.cfg`
+
 ## Prasyarat
 - Dasar komputer dan jaringan
 - Akses ke VM atau hardware
@@ -31,6 +64,8 @@ Modul ini mencakup **Exam 101** Topic 101 (System Architecture) dan Topic 102 (I
 
 ## Lab
 - [Lab 01: Install Linux](lab-01-install-linux.md)
+- Lab umum instalasi: [lab-01](../../labs/lab-01/README.md)
 
 ## Evaluasi
 - [Quiz 01](quiz-01.md)
+- Quiz LPIC-style terkait: [Quiz 01 Introduction](../../assessments/quizzes/quiz-01-introduction.md)

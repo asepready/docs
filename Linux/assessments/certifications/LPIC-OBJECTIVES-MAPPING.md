@@ -134,3 +134,37 @@ Dokumen ini memetakan modul dan lab di folder **Linux/** ke **objectives resmi L
 3. **Persiapan LPIC-3**: Pilih jalur (300 / 303 / 304 / 305) dan gabungkan **module-09-security-hardening**, **module-12-case-studies**, **06-cloud**, **project-05-high-availability**, serta materi Samba/PKI/HA/container sesuai exam yang diambil.
 
 Materi di repo ini **bukan pengganti** objectives resmi LPI. Selalu gunakan [exam objectives](https://www.lpi.org/our-certifications/exam-101-102-objectives/) sebagai acuan utama dan lengkapi dengan sumber resmi LPI (learning materials, buku, lab) untuk persiapan ujian.
+
+---
+
+## Gap & Backlog Materi (Untuk Fase Berikutnya)
+
+Bagian ini mencatat objektif LPI yang **belum memiliki modul dedikasi** atau baru tercakup secara parsial di repo ini. Gunakan sebagai backlog pengembangan modul/lab berikutnya.
+
+### LPIC-1
+
+- **106 User Interfaces and Desktops**
+  - 106.1 Install and configure X11
+  - 106.2 Graphical Desktops
+  - 106.3 Accessibility
+  - Saat ini hanya disentuh ringan (atau di-skip) karena fokus utama kurikulum adalah server headless. Dapat ditambahkan modul khusus desktop bila dibutuhkan.
+- **108.4 Manage printers and printing**
+  - Belum ada modul khusus CUPS/printing; hanya disebut sekilas di materi troubleshooting.
+
+### LPIC-2
+
+- **DNS server lanjutan (207)**
+  - Server DNS authoritative/recursive (Bind, dnsmasq) baru disentuh singkat di networking; belum ada modul server DNS penuh.
+- **Email services lanjutan (211)**
+  - Detail konfigurasi Postfix/Dovecot sebagian dibahas di proyek Mail Server dan case studies, namun belum ada modul teori terstruktur.
+- **File sharing (209)**
+  - Samba/NFS diperkenalkan di proyek NAS, namun belum ada modul konsep mendalam (ACL Windows, domain integration, dsb.).
+
+### LPIC-3 (Garis Besar)
+
+- **Security (303)** — PKI/TLS, LUKS, hardening lanjutan
+  - Dasar-dasar tersedia di `module-09-security-hardening` dan proyek web/HA, tetapi belum cukup untuk cakupan penuh LPIC-3 303.
+- **Virtualization & HA (304/305)**
+  - `06-cloud`, `project-05-high-availability` dan beberapa lab sudah relevan, namun dokumentasi modul untuk KVM/libvirt, cluster manager, dan container orchestration masih bisa diperdalam.
+
+Area-area di atas adalah kandidat prioritas bila kurikulum diperluas ke persiapan LPIC-2/LPIC-3 yang lebih komprehensif.

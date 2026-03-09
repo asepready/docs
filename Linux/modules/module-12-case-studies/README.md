@@ -18,3 +18,11 @@
 
 ## Evaluasi
 - [Quiz 12](quiz-12.md)
+- Quiz LPIC-style terkait: [Quiz 12 Case Study](../../assessments/quizzes/quiz-12-casestudy.md)
+
+## Proyek Terkait
+
+- [Proyek 1: Web Server Production](../../projects/project-01-web-server/README.md)
+- [Proyek 2: Firewall Gateway](../../projects/project-02-firewall-gateway/README.md)
+- [Proyek 3: NAS Storage](../../projects/project-03-nas-storage/README.md)
+- [Proyek 4: Mail Server](../../projects/project-04-mail-server/README.md)
